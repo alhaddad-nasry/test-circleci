@@ -12,7 +12,7 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       build:
-      	steps:
+        steps:
           -run:
             name: "JavaScript Linter"
             # yarn here makes sure we are using the local jest binary
