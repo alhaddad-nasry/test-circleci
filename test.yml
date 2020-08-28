@@ -1,0 +1,16 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+# Use a package of configuration called an orb.
+
+jobs:
+  build:
+    steps:
+      - run: yarn install
+      - run:
+          name: "JavaScript Linter"
+          # yarn here makes sure we are using the local jest binary
+          command: yarn lint -- --format junit -o reports/junit/js-lint-results.xml
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
